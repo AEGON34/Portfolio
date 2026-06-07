@@ -56,7 +56,7 @@ function Navbar() {
       >
         {/* Left logo/indicator (hidden on very small screens to save space) */}
         <div className="hidden items-center gap-3 sm:flex">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 ring-1 ring-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+          <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-600/20 ring-1 ring-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
             <div className="h-3 w-3 rounded-full bg-cyan-400 animate-pulse" />
           </div>
         </div>
@@ -72,14 +72,19 @@ function Navbar() {
               }}
               className={`
                 relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300
-                ${activeSection === item.id ? 'text-white' : 'text-slate-400 hover:text-slate-200'}
+                ${activeSection === item.id ? 'text-[#00c8ff]' : 'text-slate-400 hover:text-slate-200'}
               `}
             >
               {/* Active Background Animation (The "Toggle Bar") */}
               {activeSection === item.id && (
                 <motion.div
                   layoutId="active-pill"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-600/40 to-blue-600/40 border border-cyan-500/30 shadow-[0_0_20px_rgba(8,145,178,0.3)]"
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0,200,255,0.18), rgba(0,100,255,0.12))',
+                    border: '1px solid rgba(0,200,255,0.25)',
+                    boxShadow: '0 0 0 1px rgba(0,200,255,0.06), 0 8px 32px rgba(0,0,0,0.5)'
+                  }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
@@ -97,7 +102,7 @@ function Navbar() {
 
         {/* Right accent (hidden on small screens) */}
         <div className="hidden items-center gap-3 sm:flex">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 ring-1 ring-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+          <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-600/20 ring-1 ring-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
              <div className="h-3 w-3 rounded-full bg-cyan-400 animate-pulse" />
           </div>
         </div>

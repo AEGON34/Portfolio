@@ -1,255 +1,186 @@
-/* Skill Section Styles */
-:root {
-  --skill-primary-color: #163a6b;
-  --skill-primary-dark: #0f274a;
-  --skill-accent: #06b6d4;
-  --skill-accent-dark: #0891b2;
+/* Skill Section Redesign Styles */
+
+#skills {
+  position: relative;
+  background-color: #050d18;
 }
 
-/* Background Effects */
 #skills::before {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -100px;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 200, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient Blobs */
+.ambient-blob-1, .ambient-blob-2, .ambient-blob-3 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.ambient-blob-1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float-slow 8s ease-in-out infinite;
+  background: rgba(0, 200, 255, 0.12);
+  top: -100px;
+  left: -100px;
 }
-
-#skills::after {
-  content: '';
-  position: absolute;
-  bottom: -150px;
-  left: -150px;
+.ambient-blob-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(30, 58, 138, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float-slow-reverse 10s ease-in-out infinite;
+  background: rgba(0, 102, 255, 0.08);
+  bottom: -150px;
+  right: -100px;
+}
+.ambient-blob-3 {
+  width: 350px;
+  height: 350px;
+  background: rgba(0, 200, 255, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes float-slow-reverse {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(30px);
-  }
-}
-
-@media (max-width: 640px) {
-  #skills::before {
-    width: 250px;
-    height: 250px;
-    top: -50px;
-    right: -50px;
-  }
-
-  #skills::after {
-    width: 300px;
-    height: 300px;
-    bottom: -100px;
-    left: -100px;
-  }
-}
-
-/* Smooth Progress Bar Animation */
-@keyframes progress-glow {
-  0% {
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
-  }
-}
-
-/* Badge/Tag Hover Effects */
-.skill-badge {
-  position: relative;
-  overflow: hidden;
+/* Glass Card */
+.glass-card {
+  background: rgba(8, 22, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 200, 255, 0.10);
+  border-radius: 16px;
   transition: all 0.3s ease;
-}
-
-.skill-badge::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.skill-badge:hover::before {
-  left: 100%;
-}
-
-/* Category Card Enhancement */
-.category-card {
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.category-card:hover {
-  transform: translateY(-8px);
-}
-
-.category-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(30, 58, 138, 0.3));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.category-card:hover::before {
-  opacity: 1;
-}
-
-/* Skill Progress Fill Animation */
-.skill-progress-bar {
   position: relative;
   overflow: hidden;
-  border-radius: 9999px;
 }
 
-.skill-progress-bar::after {
+.glass-card:hover {
+  border-color: rgba(0, 200, 255, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 200, 255, 0.08);
+}
+
+.glass-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-/* Tag Cloud Animation */
-.skill-tag {
-  position: relative;
-  display: inline-block;
-}
-
-.skill-tag::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(30, 58, 138, 0.3));
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.8), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: -1;
 }
 
-.skill-tag:hover::after {
+.glass-card:hover::before {
   opacity: 1;
 }
 
-/* Stats Section */
-.skill-stat {
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 200, 255, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::after {
+  opacity: 1;
+}
+
+/* Card Header Icon Box */
+.card-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 200, 255, 0.18), rgba(0, 100, 255, 0.12));
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Card Badge */
+.card-badge {
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  background: rgba(0, 200, 255, 0.07);
+  border: 1px solid rgba(0, 200, 255, 0.12);
+  border-radius: 100px;
+  padding: 4px 10px;
+  color: #00c8ff;
+  white-space: nowrap;
+}
+
+/* Progress Bar */
+.progress-track {
+  height: 4px;
+  background: rgba(0, 200, 255, 0.08);
+  border-radius: 4px;
   position: relative;
-  padding: 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0066ff, #00c8ff);
+  box-shadow: 0 0 8px rgba(0, 200, 255, 0.5);
+  border-radius: 4px;
+  transform-origin: left;
+}
+
+.progress-fill-animate {
+  animation: fillProgress 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fillProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Tag */
+.skill-panel-tag {
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  border: 1px solid rgba(0, 200, 255, 0.22);
+  background: rgba(0, 200, 255, 0.07);
+  color: #00c8ff;
+  padding: 5px 14px;
   transition: all 0.3s ease;
+  cursor: default;
+  display: inline-block;
 }
 
-.skill-stat:hover {
-  transform: translateY(-4px);
+.skill-panel-tag:hover {
+  background: rgba(0, 200, 255, 0.14);
+  border-color: rgba(0, 200, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 200, 255, 0.15);
 }
 
-.skill-stat-number {
-  font-weight: 700;
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease;
+/* Glowing dot */
+.glowing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00c8ff;
+  box-shadow: 0 0 8px #00c8ff;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
-.skill-stat:hover .skill-stat-number {
-  filter: brightness(1.2);
+/* Typography utilities */
+.font-syne {
+  font-family: 'Syne', sans-serif;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #skills::before {
-    width: 250px;
-    height: 250px;
-    top: -50px;
-    right: -50px;
-  }
-
-  #skills::after {
-    width: 300px;
-    height: 300px;
-    bottom: -100px;
-    left: -100px;
-  }
-}
-
-@media (max-width: 480px) {
-  #skills::before {
-    width: 200px;
-    height: 200px;
-    top: 0;
-    right: -100px;
-  }
-
-  #skills::after {
-    width: 250px;
-    height: 250px;
-    bottom: -150px;
-    left: -150px;
-  }
-}
-
-/* Print Styles */
-@media print {
-  #skills::before,
-  #skills::after {
-    display: none;
-  }
+.font-dm-sans {
+  font-family: 'DM Sans', sans-serif;
 }
