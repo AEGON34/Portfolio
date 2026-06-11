@@ -33,7 +33,7 @@ const Projects = () => {
       id: 3, 
       title: 'Food Nest',
       description: 'FoodNest is a full-stack web application designed for food enthusiasts who enjoy exploring restaurants, street foods, and homemade dishes. Users can register, post reviews, manage their favorites, and view reviews from others in an engaging and responsive UI.',
-      link: 'https://ornate-sunshine-8ba480.netlify.app/',
+      link: 'https://luxury-flan-e90d84.netlify.app/',
       category: 'Review Platform',
       impact: 'Built to make discovery, reviews, and favorites feel seamless.',
       year: '2025',
